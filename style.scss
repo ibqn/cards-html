@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(30, 30%, 95%);
+}
+
+.container {
+  max-width: 1170px;
+  padding: 0 15px;
+  margin: auto;
+}
+
+.products {
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 50px 30px;
+  }
+}
+
+.product {
+  &-image-box {
+    box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.15);
+    overflow: hidden;
+  }
+
+  &-image {
+    max-width: 100%;
+    display: block;
+    margin: auto;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateX(-10px);
+    }
+  }
+}
