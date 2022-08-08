@@ -1,3 +1,5 @@
+@import './node_modules/@fontsource/poppins/index.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -5,6 +7,7 @@
 }
 
 body {
+  font-family: 'Poppins', sans-serif;
   background-color: hsl(30, 30%, 95%);
 }
 
@@ -15,6 +18,8 @@ body {
 }
 
 .products {
+  padding: 100px 0;
+
   &-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -23,6 +28,8 @@ body {
 }
 
 .product {
+  position: relative;
+
   &-image-box {
     box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.15);
     overflow: hidden;
@@ -36,6 +43,109 @@ body {
 
     &:hover {
       transform: translateX(-10px);
+    }
+  }
+
+  &-title {
+    margin: 25px 0 15px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.3;
+    text-transform: capitalize;
+
+    a {
+      color: hsl(0, 0%, 30%);
+      text-decoration: none;
+    }
+  }
+
+  &-price {
+    color: hsl(0, 0%, 10%);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  &:hover &-icon-buttons {
+    a:nth-child(2) {
+      transition-delay: 0.1s;
+    }
+
+    a:nth-child(3) {
+      transition-delay: 0.2s;
+    }
+  }
+
+  &-icon-buttons {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+
+    a {
+      height: 40px;
+      width: 40px;
+      background-color: hsl(0, 0%, 100%);
+      box-shadow: 0 0 5px hsl(0, 0%, 88%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 6px;
+      border-radius: 50%;
+      text-decoration: none;
+      color: hsl(0, 0%, 30%);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+  }
+
+  &-tooltip {
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+    background-color: hsl(0, 0%, 20%);
+    color: hsl(0, 0%, 95%);
+    font-size: 12px;
+    text-transform: capitalize;
+    padding: 4px 8px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translateY(-50%);
+      border-width: 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent hsl(0, 0%, 20%);
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .product {
+    a:hover &-tooltip {
+      opacity: 1;
+      transform: translate(-10px, -50%);
+    }
+
+    &-icon-buttons {
+      a {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+    }
+
+    &:hover &-icon-buttons {
+      a {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   }
 }
